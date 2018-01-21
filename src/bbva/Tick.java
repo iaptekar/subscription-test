@@ -6,21 +6,21 @@ package bbva;
  */
 public class Tick {
 
-	enum Direction {
-		BUY, SELL
+	enum Side {
+		BID, ASK
 	}
 
-	private int numberOfShares;
+	private int volume;
 	private double price;
-	private Direction direction;
+	private Side side;
 	private String symbol;
 
-	public int getNumberOfShares() {
-		return numberOfShares;
+	public int getVolume() {
+		return volume;
 	}
 
-	public void setNumberOfShares(int numberOfShares) {
-		this.numberOfShares = numberOfShares;
+	public void setVolume(int volume) {
+		this.volume = volume;
 	}
 
 	public double getPrice() {
@@ -39,12 +39,11 @@ public class Tick {
 		this.symbol = symbol;
 	}
 
-	public boolean isSell() {
-		return direction == Direction.SELL;
+	public boolean isAsk() {
+		return side == Side.ASK;
 	}
 
-	public void setDirection(Direction direction) {
-		this.direction = direction;
+	public void setSide(Side side) {
+		this.side = side;
 	}
-
 }

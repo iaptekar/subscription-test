@@ -1,31 +1,12 @@
 package bbva;
 
-import java.util.HashMap;
-import java.util.Map;
+/**
+ * Markets provide ticks on instruments subscribed to
+ *
+ */
+public interface Market {
 
-public class Market implements Runnable {
+	void subscribe(String instrument);
 
-	private final Map<String, InstrumentListener> listeners = new HashMap<>();
-
-	private final MarketConnection connection;
-
-	public Market(MarketConnection connection) {
-		this.connection = connection;
-	}
-
-	public void subscribe(String instrument, InstrumentListener listener) {
-		listeners.put(instrument, listener);
-	}
-
-	@Override
-	public void run() {
-		while (!Thread.currentThread().isInterrupted()) {
-			Tick tick = connection.nextTick();
-			InstrumentListener listener = listeners.get(tick.getSymbol());
-			if (listener != null) {
-				listener.onTick(tick);
-			}
-
-		}
-	}
+	Tick nextTick();
 }
