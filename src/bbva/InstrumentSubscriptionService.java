@@ -17,7 +17,7 @@ public class InstrumentSubscriptionService {
 
 	public InstrumentSubscriptionService(Collection<Market> markets, Collection<String> instruments) {
 		this.markets = markets;
-		instruments.forEach(instrument -> listeners.put(instrument, new InstrumentListener()));
+		instruments.forEach(instrument -> listeners.put(instrument, new InstrumentListener(instrument)));
 	}
 
 	public void start() {

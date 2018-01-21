@@ -39,8 +39,8 @@ public class Tick {
 		this.symbol = symbol;
 	}
 
-	public boolean isAsk() {
-		return side == Side.ASK;
+	public Side getSide() {
+		return side;
 	}
 
 	public void setSide(Side side) {
